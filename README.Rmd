@@ -1,0 +1,65 @@
+### R/sl4hm: Simulated Likelihood for modelling household pandemic
+
+
+[Yair Goldberg](https://yairgo.net.technion.ac.il/) and Rami Yaari
+
+[R/corihw](https://github.com/yairgoldy/sl4hm) is an [R](https:/www.r-project.org) package. This package implements ??? 
+
+#### Installation
+
+You can install it from its [GitHub repository](https://github.com/yairgoldy/sl4hm). You first need to install the [devtools](https://github.com/hadley/devtools) package.
+
+```r
+install.packages("devtools")
+```
+
+Then install R/sl4hm using the `install_github` function in the
+[devtools](https://github.com/hadley/devtools) package.
+
+```r
+library(devtools)
+install_github("yairgoldy/sl4hm")
+```
+
+#### Example use
+
+First create a dataset in which each row corresponds to a family and includes the number of adults and children and the index case.
+
+```{r}
+
+library(sl4hm)
+family_structure_data <- create_family_structure_data(n=1000)
+head(family_structure_data,n = 5)
+
+```
+
+Then simulate the dynamic within each household and obtain a dataset that includes the number of positive adults and children at the end of the pandemic. 
+```{r}
+dat <- create_simulated_data(family_structure_data = family_structure_data,
+                             beta_cc = 0.1,
+                             beta_ca = 0.2,
+                             beta_ac = 0.2,
+                             beta_aa = 0.4)
+head(dat,n = 5)
+
+                           
+```
+
+Calculate the likelihood surface for this dataset. The likelihood is calculated for coarse grid. One can download a full dictionary [from here](??) which enables calculating the likelihood on a finer grid. Here, a dictionary holds the distribution of the number of positives for each family type and duration. One can also create a dictionary using the  function `family_dictionary`.
+```{r}
+lik <- calc_likelihood(dat)
+head(lik,5)
+require(ggplot2,quietly = T)
+
+ggplot(lik,aes(x=gamma_val,y=delta_val,z=nll))+
+  facet_wrap(~beta_aa,labeller="label_both", ncol=3)+
+  geom_contour_filled(binwidth=5)+
+  geom_contour(color = "black", size = 0.1,binwidth=5) +
+  xlab("Child/Adult susceptablity")+
+  ylab("Child/Adult infectivity")+
+ggtitle("Likelihood Surface")+
+ theme_bw()
+
+```
+
+Using the function `run_simulation` one can create multiple datasets and find the MLE for each dataset. This can be used for calculating bootstrap confidence intervals for the parameters.
