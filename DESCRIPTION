@@ -1,6 +1,6 @@
 Package: sl4hm
 Type: Package
-Title: Simulated likelihood for modelling household pandemic
+Title: Simulated likelihood for modelling household epidemics
 Version: 0.1.0
 Authors@R: c(
     person(given = "Yair Goldberg",
@@ -9,7 +9,7 @@ Authors@R: c(
     person(given = "Rammi Yaari",
            role = c("aut"),
            email = ""))
-Description: Simulated likelihood for modelling household pandemic.
+Description: Simulated likelihood for modelling household epidemics.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
