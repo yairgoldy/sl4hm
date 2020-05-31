@@ -4,17 +4,24 @@
 \alias{create_family_structure_data}
 \title{Create a random dataset of families}
 \usage{
-create_family_structure_data(seed = -1, n = 1000, index_case_prob = 0.8)
+create_family_structure_data(
+  seed = -1,
+  n = 1000,
+  adult_index_case_prob = 0.8,
+  T_max = 30
+)
 }
 \arguments{
 \item{seed}{seed for the simulation}
 
 \item{n}{number of families}
 
-\item{index_case_prob}{probability that the index case is adult}
+\item{adult_index_case_prob}{probability that the index case is adult}
+
+\item{T_max}{number of days to run epidemic (scalar or vector of size n)}
 }
 \value{
-a the result as a tibble including the number of adults, the number of children, the index case, and the pandemic duration (in days) of each family
+a the result as a tibble including the number of adults, the number of children, the index case, and the epidemic duration (in days) of each family
 }
 \description{
 Create a random dataset of families

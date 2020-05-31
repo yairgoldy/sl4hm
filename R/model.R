@@ -1,3 +1,22 @@
+
+
+#' Generate a vector of the generation time distribution using the Gamma distribution
+#' @param mean_P the mean of the distribution
+#' @param sd_P the standard deviation of the distribution
+#' @return a vector of the generation time distribution
+#' @export
+#' @importFrom stats pgamma
+
+load_P <- function(mean_P=4.5, sd_P=2.5){
+  x <- 1:21
+  shape_P <- (mean_P/sd_P)^2
+  scale_P <- mean_P/shape_P
+  P <- stats::pgamma(x,shape=shape_P,scale=scale_P)-pgamma(x-1,shape=shape_P,scale=scale_P)
+  P <- P/sum(P)
+  return(P)
+}
+
+
 if(getRversion() >= "2.15.1")
   utils::globalVariables(c("pos.adults", "pos.childs","first.is.adult",
                            "adults","childs","day","delta_val","n","family_prob",
@@ -183,19 +202,3 @@ simulate_household <- function(seed = -1,adults,childs,first.is.adult,
 }
 
 
-
-#' Generate a vector of the generation time distribution using the Gamma distribution
-#' @param mean_P the mean of the distribution
-#' @param sd_P the standard deviation of the distribution
-#' @return a vector of the generation time distribution
-#' @importFrom stats pgamma
-
-
-load_P <- function(mean_P=4.5, sd_P=2.5) {
-  x <- 1:21
-  shape_P <- (mean_P/sd_P)^2
-  scale_P <- mean_P/shape_P
-  P <- stats::pgamma(x,shape=shape_P,scale=scale_P)-pgamma(x-1,shape=shape_P,scale=scale_P)
-  P <- P/sum(P)
-  return(P)
-}

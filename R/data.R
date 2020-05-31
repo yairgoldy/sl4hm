@@ -12,10 +12,10 @@
 #' @seealso  `create_simulated_data` `run_simulation`
 
 create_family_structure_data <- function(seed = -1,n = 1000,
-                                         adult_index_case_prob = 0.8, T_max=30){
+                                         adult_index_case_prob = 0.8, T_max=21){
 
   stopifnot(length(T_max)==1 | length(T_max)==n)
-  
+
   if(seed>1){
     set.seed(seed = seed)
   }
