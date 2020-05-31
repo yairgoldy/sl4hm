@@ -3,7 +3,7 @@
 
 [Yair Goldberg](https://yairgo.net.technion.ac.il/) and Rami Yaari
 
-[R/corihw](https://github.com/yairgoldy/sl4hm) is an [R](https:/www.r-project.org) package. This package implements simulations of epidemics within households of children and adults and calculates the likelihood of a set of transmission parameters given a dataset of the
+[R/sl4hm](https://github.com/yairgoldy/sl4hm) is an [R](https:/www.r-project.org) package. This package implements simulations of epidemics within households of children and adults and calculates the likelihood of a set of transmission parameters given a dataset of the
 result of epidemics (number of infected children and adults) within households.
 
 #### Installation
@@ -42,7 +42,7 @@ dat <- create_simulated_data(family_structure_data = family_structure_data,
                              beta_ca = 0.2,
                              beta_ac = 0.2,
                              beta_aa = 0.4,
-                             P=load_P())
+                             P=sl4hm::load_P())
 head(dat,n = 5)
 
                            
