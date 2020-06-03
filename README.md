@@ -1,4 +1,4 @@
-### R/sl4hm: Simulated Likelihood for modelling household pandemic
+### R/sl4hm: Simulated Likelihood for modelling household epidmics
 
 
 [Yair Goldberg](https://yairgo.net.technion.ac.il/) and Rami Yaari
