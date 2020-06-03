@@ -49,8 +49,7 @@ head(dat,n = 5)
 ```
 Calculate the likelihood surface for this dataset. While the simulated data can
 be generated with any combination of beta values, the likelihood function assumes
-a unique structure of beta in which &beta_{ac}=&beta_{aa}* &delta, beta_ca=beta_aa*gamma,
-and beta_cc=beta_aa*delta*gamma, where gamma and delta are non-negative coeficients
+a unique structure of beta in which ![](https://latex.codecogs.com/gif.latex?%5Cbeta_%7Bac%7D%3D%5Cbeta_%7Baa%7D%5Ctimes%5Cdelta%2C%20%5Cbeta_%7Bca%7D%3D%5Cbeta_%7Baa%7D%5Ctimes%5Cgamma%2C%20%5Cbeta_%7Bcc%7D%3D%5Cbeta_%7Baa%7D%5Ctimes%5Cdelta%5Ctimes%5Cgamma), where gamma and delta are non-negative coeficients
 measuring the susceptibility and infectivity of children compared to adults.
 The likelihood is calculated for a coarse grid. One can download a dictionary [from here](https://technionmail-my.sharepoint.com/:f:/g/personal/yairgo_technion_ac_il/EoMePBbpQkxLkju-mi51-ywB8pVeWgiEFY99IpHFtynjbw?e=dgVBUk) which enables calculating the likelihood on a finer grid. This dictionary holds the distribution of the number of infected for each family type and duration of epidemic. One can also create a dictionary using the function `family_dictionary`.
 ```{r}
