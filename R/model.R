@@ -32,7 +32,7 @@ if(getRversion() >= "2.15.1")
 #' @export
 #' @importFrom magrittr "%>%"
 #' @import tibble
-#' @importFrom dplyr mutate select group_by summarise ungroup arrange inner_join as.tbl_cube
+#' @importFrom dplyr mutate select group_by summarise ungroup arrange inner_join
 #' @seealso `create_simulated_data`
 calc_likelihood <- function(dat,dictionary_path = NULL){
 
@@ -132,6 +132,7 @@ calc_likelihood <- function(dat,dictionary_path = NULL){
 #' @return a tibble with the epidemic development over time by day
 #' @export
 #' @import magrittr
+#' @importFrom cubelyr as.tbl_cube
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr mutate select group_by summarise ungroup arrange inner_join
 #' @importFrom tidyr  spread  gather
@@ -189,7 +190,7 @@ simulate_household <- function(seed = -1,adults,childs,first.is.adult,
       tidyr::gather(type,inf,-index,-day)
   } else {
     dimnames(inf) = list("day" = 1:T_max,"type" = c("pos.childs","pos.adults"), "index" = 1:ssn)
-    inf <- dplyr::as.tbl_cube(inf) %>% tibble::as_tibble()
+    inf <- cubelyr::as.tbl_cube(inf) %>% tibble::as_tibble()
   }
   inf  <- inf %>%
     dplyr::arrange(type,index,day) %>%

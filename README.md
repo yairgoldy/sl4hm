@@ -21,6 +21,14 @@ Then install R/sl4hm using the `install_github` function in the
 library(devtools)
 install_github("yairgoldy/sl4hm")
 ```
+### The data 
+
+Loading the data used for the analysis and saving it to a csv file ca can be done as follows. 
+```{r}
+library(sl4hm)
+household_data
+write.csv(x = household_data,file = "household_data.csv")
+```
 
 #### Example use
 
@@ -28,7 +36,6 @@ First create a dataset in which each row corresponds to a family and includes th
 
 ```{r}
 
-library(sl4hm)
 family_structure_data <- create_family_structure_data(n=1000)
 head(family_structure_data,n = 5)
 
@@ -49,7 +56,8 @@ head(dat,n = 5)
 ```
 Calculate the likelihood surface for this dataset. While the simulated data can
 be generated with any combination of beta values, the likelihood function assumes
-a unique structure of beta in which ![](https://latex.codecogs.com/gif.latex?%5Cbeta_%7Bac%7D%3D%5Cbeta_%7Baa%7D%5Ctimes%5Cdelta%2C%20%5Cbeta_%7Bca%7D%3D%5Cbeta_%7Baa%7D%5Ctimes%5Cgamma%2C%20%5Cbeta_%7Bcc%7D%3D%5Cbeta_%7Baa%7D%5Ctimes%5Cdelta%5Ctimes%5Cgamma), where gamma and delta are non-negative coeficients
+a unique structure of beta in which beta_ac=beta_aa*delta, beta_ca=beta_aa*gamma,
+and beta_cc=beta_aa*delta*gamma, where gamma and delta are non-negative coeficients
 measuring the susceptibility and infectivity of children compared to adults.
 The likelihood is calculated for a coarse grid. One can download a dictionary [from here](https://technionmail-my.sharepoint.com/:f:/g/personal/yairgo_technion_ac_il/EoMePBbpQkxLkju-mi51-ywB8pVeWgiEFY99IpHFtynjbw?e=dgVBUk) which enables calculating the likelihood on a finer grid. This dictionary holds the distribution of the number of infected for each family type and duration of epidemic. One can also create a dictionary using the function `family_dictionary`.
 ```{r}

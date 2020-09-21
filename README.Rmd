@@ -21,6 +21,14 @@ Then install R/sl4hm using the `install_github` function in the
 library(devtools)
 install_github("yairgoldy/sl4hm")
 ```
+### The data 
+
+Loading the data used for the analysis and saving it to a csv file ca can be done as follows. 
+```{r}
+library(sl4hm)
+household_data
+write.csv(x = household_data,file = "household_data.csv")
+```
 
 #### Example use
 
@@ -28,7 +36,6 @@ First create a dataset in which each row corresponds to a family and includes th
 
 ```{r}
 
-library(sl4hm)
 family_structure_data <- create_family_structure_data(n=1000)
 head(family_structure_data,n = 5)
 
