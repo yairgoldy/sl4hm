@@ -30,6 +30,8 @@ household_data
 write.csv(x = household_data,file = "household_data.csv")
 ```
 
+The more detailed individualized-data level of the household data can be downloaded directly from this GitHub repository.
+
 #### Example use
 
 First create a dataset in which each row corresponds to a family and includes the number of adults and children and the index case.

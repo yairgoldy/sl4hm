@@ -23,12 +23,14 @@ install_github("yairgoldy/sl4hm")
 ```
 ### The data 
 
-Loading the data used for the analysis and saving it to a csv file ca can be done as follows. 
+Loading the household data used for the analysis and saving it to a csv file ca can be done as follows. 
 ```{r}
 library(sl4hm)
 household_data
 write.csv(x = household_data,file = "household_data.csv")
 ```
+
+The more detailed individualized-data level of the household data can be downloaded directly from this GitHub repository.
 
 #### Example use
 
